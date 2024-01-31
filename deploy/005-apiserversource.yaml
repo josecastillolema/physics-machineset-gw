@@ -6,8 +6,11 @@ metadata:
 spec:
   mode: Resource
   resources:
-  - apiVersion: apps/v1
-    kind: Deployment
+  - apiVersion: v1
+    kind: Pod
+    selector:
+      matchLabels:
+        scale: true
   serviceAccountName: clusteradmin
   sink:
     ref:
