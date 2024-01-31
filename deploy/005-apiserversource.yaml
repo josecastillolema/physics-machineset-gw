@@ -1,0 +1,16 @@
+apiVersion: sources.knative.dev/v1
+kind: ApiServerSource
+metadata:
+  name: api-server-source-machineset-gw
+  namespace: openwhisk
+spec:
+  mode: Resource
+  resources:
+  - apiVersion: apps/v1
+    kind: Deployment
+  serviceAccountName: clusteradmin
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: machineset-gw

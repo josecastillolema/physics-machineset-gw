@@ -1,0 +1,25 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/route-disabled: 'true'
+  name: machineset-gw
+  namespace: openshift-machine-api
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '1'
+    spec:
+      containerConcurrency: 1
+      serviceAccountName: clusteradmin-machine-api
+      containers:
+        - image: >-
+          # change image by the real service sync
+          # image: gcr.io/knative-releases/knative.dev/eventing/cmd/event_display
+          image: quay.io/jcastillolema/machineset-gw:latest
+          imagePullPolicy: Always
+          name: machineset-gw
+          ports:
+            - containerPort: 8080
+              protocol: TCP
