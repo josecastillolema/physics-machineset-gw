@@ -10,7 +10,7 @@ spec:
     kind: Pod
     selector:
       matchLabels:
-        scale: true
+        scale: "true"
   serviceAccountName: clusteradmin
   sink:
     ref:
