@@ -8,9 +8,9 @@ spec:
   resources:
   - apiVersion: v1
     kind: Pod
-    selector:
-      matchLabels:
-        scale: "true"
+      #selector:
+      #matchLabels:
+      #  scale: "true"
   serviceAccountName: clusteradmin
   sink:
     ref:

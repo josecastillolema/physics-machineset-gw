@@ -33,7 +33,7 @@ def home():
     # not in the updates or removal
     event_type = event['type']
     app.logger.info('The event type is %s', event_type)
-
+    return "", 204
     # filter by event type (only "add" event is needed)
     # if event_type not in EVENT_TYPES:
     #    return "", 202
@@ -41,6 +41,7 @@ def home():
     replicas = len(v1.list_pod_for_all_namespaces (label_selector="scale=true").items)
     print("Scaling to " + str(replicas) + " replicas ...")
     subprocess.run(["kubectl", "-n", "openshift-machine-api", "scale",  "--replicas="+str(replicas), "machineset/ocphub-t4rh8-worker-eu-north-1b"])
+    return "", 204
 
 if __name__ == "__main__":
     app.run(port=8080)

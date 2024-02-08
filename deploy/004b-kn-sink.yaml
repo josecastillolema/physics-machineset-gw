@@ -18,7 +18,7 @@ spec:
         - image: >-
           # change image by the real service sync
           # image: gcr.io/knative-releases/knative.dev/eventing/cmd/event_display
-          image: quay.io/jcastillolema/machineset-gw:latest
+          image: quay.io/jcastillolema/machineset-gw:2
           imagePullPolicy: Always
           name: machineset-gw
           ports:
